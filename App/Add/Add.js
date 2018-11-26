@@ -40,32 +40,19 @@ export default class App extends Component < Props > {
     render() {
         return (
             <View style={{flex: 1,backgroundColor:'#fff'}}>
-                    <Header transparent>
-                        <Left>
-                            <Button transparent>
-                                <Thumbnail small source={{uri: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'}} />
-                            </Button>
-                        </Left>
-
-                        <Body style={{alignItems:'center',justifyContent:'center',color:'black'}}>
-                            <Title style={{color:'black'}}></Title>
-                        </Body>
-                        <Right>
-                            <Button transparent>
-                                <Icon name='add' style={{fontSize: 30, color: 'black'}} />
-                            </Button>
-                        </Right>
-                    </Header>
+                  
                     <View style={{flex: 4,backgroundColor:'#fff'}}>
-                            <FlatList data={this.state.product} 
-                            renderItem={({item})=> <View style={{flexDirection:'row',borderBottomWidth: 1, borderTopWidth: 0,borderBottomColor: '#ddd',padding:1}}>
+                        <FlatList data={this.state.product} 
+                            renderItem={({item})=> <TouchableOpacity onPress={()=>this.props.navigation.navigate('Task')}><View style={{flexDirection:'row',borderBottomWidth: 1, borderTopWidth: 0,borderBottomColor: '#ddd',padding:1}}>
                             <Body style={{}}>
                             <H3 style={{margin:10,fontWeight:'bold'}}>{item.key}</H3>
                             </Body>
                             <Right style={{width:140}}>
                             <Image style={{width: 140, height: 180}} source={{ uri: item.url }} />
                             </Right>
-                            </View>}/>
+                            </View>
+                            </TouchableOpacity>
+                        }/>
                     </View>
                 </View>
         );

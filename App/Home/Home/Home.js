@@ -28,36 +28,24 @@ class App extends Component < Props > {
     render() {
         return (
                 <View style={{flex: 1,backgroundColor:'#fff'}}>
-                    <Header transparent>
-                        <Left>
-                            <Button transparent>
-                                <Thumbnail small source={{uri: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'}} />
-                            </Button>
-                        </Left>
-
-                        <Body style={{alignItems:'center',justifyContent:'center',color:'black'}}>
-                            <Title style={{color:'black'}}></Title>
-                        </Body>
-                        <Right>
-                            <Button transparent>
-                                <Icon name='add' style={{fontSize: 30, color: 'black'}} />
-                            </Button>
-                        </Right>
-                    </Header>
                     <View style={{flex: 3,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                         <Thumbnail large source={{uri: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'}} />
                         <Text style={{fontSize:20,fontFamily:'Montserrat-Thin',margin:3}}>Good Job Man !</Text>
                         <Text style={{fontSize:20,fontFamily:'Montserrat-Thin',margin:3}}>you havnt missed any activities this week</Text>
                     </View>
                     <View style={{flex: 2,backgroundColor:'#fff', flexDirection: 'row',alignSelf:"center"}}>
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Left_Progress')}>
                         <View style={{flex: 1,flexDirection:'column',backgroundColor:'#4dd0e1',alignItems:'center',justifyContent:'center'}}>
                             <H3 style={{color:"#fff",fontFamily:'Montserrat-Light',margin:10}}>1.01^Upto today</H3>
                             <H1 style={{color:"#fff",fontFamily:'Montserrat-Bold',margin:10}}>10</H1>
                         </View>
+                    </TouchableOpacity>   
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Right_Withdraw')}> 
                         <View style={{flex: 1,flexDirection:'column',backgroundColor:'#ba68c8',alignItems:'center',justifyContent:'center'}}>
                             <H3 style={{color:"#fff",fontFamily:'Montserrat-Light',margin:10}}>0.99^Upto today</H3>
                             <H1 style={{color:"#fff",fontFamily:'Montserrat-Bold',margin:10}}>0.1</H1>
                         </View>
+                    </TouchableOpacity>      
                     </View>
                     <View style={{flex: 4,backgroundColor:'#fff',marginTop:30}}>
                     <List>
@@ -101,11 +89,11 @@ const RootStack =  createAppContainer(createStackNavigator({
   }
 },
   {
-    initialRouteName: 'Left_Progress',
+    initialRouteName: 'App',
     headerMode :'none'
   }));
 export default class Home extends React.Component {
   render() {
-    return (  <RootStack />  );
+    return (  <RootStack screenProps={{ rootNavigation: this.props.navigation }} />  );
   }
 }

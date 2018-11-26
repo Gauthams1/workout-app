@@ -41,8 +41,8 @@ class App extends Component < Props > {
     }
 }
 const mapStateToProps = (state) => {
-    console.log("\n\n\n\n\n\n ----------");
-    console.log(Object.keys(state.reducer1));
+    // console.log("\n\n\n\n\n\n ----------");
+    // console.log(Object.keys(state.reducer1));
     return {
         reducer1: state.reducer1
     };

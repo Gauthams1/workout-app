@@ -40,22 +40,6 @@ class App extends Component < Props > {
     render() {
         return (
                 <View style={{flex: 1,backgroundColor:'#fff'}}>
-                    <Header transparent>
-                        <Left>
-                            <Button transparent>
-                                <Thumbnail small source={{uri: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'}} />
-                            </Button>
-                        </Left>
-
-                        <Body style={{alignItems:'center',justifyContent:'center',color:'black'}}>
-                            <Title style={{color:'black'}}></Title>
-                        </Body>
-                        <Right>
-                            <Button transparent>
-                                <Icon name='add' style={{fontSize: 30, color: 'black'}} />
-                            </Button>
-                        </Right>
-                    </Header>
                     <View style={{flex: 6,backgroundColor:'#fff', flexDirection: 'row',alignSelf:"center"}}>
                       <Rootnavigate/>
                     </View>
@@ -115,8 +99,8 @@ const Rootnavigate=createAppContainer(createMaterialTopTabNavigator({
 
 
 const mapStateToProps = (state) => {
-    console.log("\n\n\n\n\n\n ----------");
-    console.log(Object.keys(state.reducer1));
+    // console.log("\n\n\n\n\n\n ----------");
+    // console.log(Object.keys(state.reducer1));
     return {
         reducer1: state.reducer1
     };

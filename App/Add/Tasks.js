@@ -24,6 +24,7 @@ export default class App extends Component < Props > {
             ],
             isDateTimePickerVisible: false,
             date_1:new Date(),
+            date_2:new Date(),
             refresh: false,
         };
     }
@@ -34,30 +35,18 @@ export default class App extends Component < Props > {
     this.setState({date_1:date})
     this._hideDateTimePicker();
   };
+    _handleDatePicked2 = (date) => {
+    this.setState({date_2:date})
+    this._hideDateTimePicker();
+  };
     componentDidMount() {}
     render() {
         return (
             <View style={{flex: 1,backgroundColor:'#fff'}}>
-                    <Header transparent>
-                        <Left>
-                            <Button transparent>
-                                <Thumbnail small source={{uri: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'}} />
-                            </Button>
-                        </Left>
-
-                        <Body style={{alignItems:'center',justifyContent:'center',color:'black'}}>
-                            <Title style={{color:'black'}}></Title>
-                        </Body>
-                        <Right>
-                            <Button transparent>
-                                <Icon name='add' style={{fontSize: 30, color: 'black'}} />
-                            </Button>
-                        </Right>
-                    </Header>
-                    <View style={{flex: 2,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
-                        <Thumbnail large source={{uri: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'}} />
+                    <View style={{flex: 3,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
+                        <ImageBackground style={{width: '100%', height: '100%'}} source={{uri: 'https://images.pexels.com/photos/434337/pexels-photo-434337.jpeg?auto=compress&cs=tinysrgb&h=350'}} />
                     </View>
-                    <View style={{flex: 7,backgroundColor:'#fff',marginTop:30,flexDirection:'column'}}>
+                    <View style={{flex: 6,backgroundColor:'#fff',marginTop:0,padding:10,flexDirection:'column'}}>
                     <ScrollView>
                       <List>
                         <ListItem itemDivider>
@@ -69,37 +58,50 @@ export default class App extends Component < Props > {
                               <Input />
                             </Item>
                         </ListItem>  
-                        
+                        <ListItem>
+                            <Item floatingLabel>
+                              <Label>Description</Label>
+                              <Input />
+                            </Item>
+                        </ListItem>  
                        <ListItem itemDivider>
-                          <Text>Stats</Text>
+                          <Text>Duration</Text>
                         </ListItem>                    
                         <ListItem>
                         <TouchableOpacity onPress={this._showDateTimePicker}>
-                          <Text>{moment(this.state.date_1).format('Do MMMM YY')}</Text>
+                          <Text>{moment(this.state.date_1).format('MMMM Do YY, HH:mm')}</Text>
                         </TouchableOpacity>
                             <DateTimePicker
                               isVisible={this.state.isDateTimePickerVisible}
+                              mode={'datetime'}
                               onConfirm={this._handleDatePicked}
                               onCancel={this._hideDateTimePicker}
                             />
                         </ListItem>  
                         <ListItem>
-                        <Left>
-                          <Text>Notifications</Text>
-                        </Left>
-                        <Right>
-                          <Switch value={false} />
-                        </Right>
-                      </ListItem>
-                       <ListItem>
-                        <Left>
-                          <Text>Notifications</Text>
-                        </Left>
-                        <Right>
-                          <Switch value={false} />
-                        </Right>
-                      </ListItem>
+                        <TouchableOpacity onPress={this._showDateTimePicker}>
+                          <Text>{moment(this.state.date_2).format('MMMM Do YY, HH:mm')}</Text>
+                        </TouchableOpacity>
+                            <DateTimePicker
+                              isVisible={this.state.isDateTimePickerVisible}
+                              mode={'datetime'}
+                              onConfirm={this._handleDatePicked2}
+                              onCancel={this._hideDateTimePicker}
+                            />
+                        </ListItem>  
+                        <ListItem itemDivider>
+                          <Text>Duration</Text>
+                        </ListItem>                    
+                        <ListItem>
+                            <Item floatingLabel>
+                              <Label>Amount Locking</Label>
+                              <Input />
+                            </Item>
+                        </ListItem>  
                       </List>
+                       <Button block >
+                        <Text>Start the Task</Text>
+                      </Button>
                       </ScrollView>
                     </View>
                 </View>

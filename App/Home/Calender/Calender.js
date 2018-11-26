@@ -21,22 +21,6 @@ componentDidMount(){
     return (
 
        <View style={{flex: 1,backgroundColor:'#fff'}}>
-                    <Header transparent>
-                        <Left>
-                            <Button transparent>
-                                <Thumbnail small source={{uri: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'}} />
-                            </Button>
-                        </Left>
-
-                        <Body style={{alignItems:'center',justifyContent:'center',color:'black'}}>
-                            <Title style={{color:'black'}}></Title>
-                        </Body>
-                        <Right>
-                            <Button transparent>
-                                <Icon name='add' style={{fontSize: 30, color: 'black'}} />
-                            </Button>
-                        </Right>
-                    </Header>
                     <View style={{flex: 4,backgroundColor:'#fff'}}>
                             <Calendar
                               onDayPress={this.onDayPress}
