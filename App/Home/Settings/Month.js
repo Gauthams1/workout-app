@@ -20,8 +20,9 @@ class App extends Component < Props > {
         super();
         this.state = {
              product: [ 
-            {key: 'Nike sport',status:false,url:'https://c.static-nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/ms8jq491fqaacieyslpx/odyssey-react-running-shoe-9dSlGS.jpg'},
-            {key: 'Mclaren Sport',status:true,url:'https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/media/assets/submodel/8948.jpg'}],
+            {key: 'Run 50 miles',status:false,time:'09:00 Am'},
+            {key: 'Code 2 hr',status:true,time:'19:00 Am'}
+            ],
             refresh: false,
         };
     }
@@ -37,7 +38,7 @@ class App extends Component < Props > {
        <FlatList data={this.state.product} 
         renderItem={({item})=> <ListItem thumbnail style={{}}>
         <Left>
-        <Text style={{fontFamily:'Montserrat-Medium'}}>09:00 Am</Text>
+        <Text style={{fontFamily:'Montserrat-Medium'}}>{item.time}</Text>
         </Left>
         <Body >
         <Text style={{fontFamily:'Montserrat-Medium'}}>{item.key}</Text>

@@ -19,10 +19,11 @@ export default class App extends Component < Props > {
         super();
         this.state = {
             product: [
-                { key: 'Nike sport', status: 50, url: 'https://asset1.cxnmarksandspencer.com/is/image/mands/44e79d5a6007d11fd420b6c302d0f2fc0ef404da?$Homepage_600x330$' },
-                { key: 'Mclaren Sport', status: 30, url: 'https://images.agoramedia.com/everydayhealth/gcms/Tips-for-Better-Digestive-Health-1440X810.jpg?width=722' },
-                { key: 'Mclaren Sport', status: 30, url: 'https://coda.newjobs.com/api/imagesproxy/ms/cms/content30/images/negotiate-equity.jpg' },
-                { key: 'Nike sport', status: 50, url: 'https://image.shutterstock.com/image-photo/healthy-lifestyle-sports-woman-running-260nw-255001651.jpg' },
+                { key: 'Diet Habbit', url: 'https://asset1.cxnmarksandspencer.com/is/image/mands/44e79d5a6007d11fd420b6c302d0f2fc0ef404da?$Homepage_600x330$' },
+                { key: 'Running &  Gym', url: 'https://image.shutterstock.com/image-photo/young-woman-runner-running-on-260nw-359568020.jpg' },
+                { key: 'Sleeping', url: 'https://image.shutterstock.com/image-photo/healthy-lifestyle-sports-woman-running-260nw-255001651.jpg' },
+                { key: 'Bad Habbit', url: 'https://images.pexels.com/photos/798124/pexels-photo-798124.jpeg?auto=compress&cs=tinysrgb&h=350' },
+                { key: 'Custom', url: 'https://i.kinja-img.com/gawker-media/image/upload/s--rkD57DNh--/c_scale,f_auto,fl_progressive,q_80,w_800/1884e9zof7czzjpg.jpg' },
             ],
             isDateTimePickerVisible: false,
             date_1:new Date(),

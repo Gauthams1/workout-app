@@ -12,13 +12,14 @@ import Video from 'react-native-af-video-player';
 import {
     connect
 } from 'react-redux'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 class App extends Component < Props > {
     constructor() {
         super();
         this.state = {
            product: [ 
-            {key: '200 Push up',status:50,url:'https://c.static-nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/ms8jq491fqaacieyslpx/odyssey-react-running-shoe-9dSlGS.jpg'},
-            {key: '10 Rounds Track',status:30,url:'https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/media/assets/submodel/8948.jpg'}],
+            {key: '200 Push up',status:false,time:"09:00 Am"},
+            {key: '10 Rounds Track',status:false,time:"09:00 Pm"}],
             refresh: false,
         };
     }
@@ -27,15 +28,19 @@ class App extends Component < Props > {
     render() {
         return (    
                     <List>
-                            <FlatList data={this.state.product} 
-                            renderItem={({item})=> <ListItem thumbnail>
-                            <Left>
-                            </Left>
-                            <Body style={{width:'40%'}}>
-                            <H3 style={{margin:10,fontWeight:'bold'}}>{item.key}</H3>
-                            </Body>
-                            <Right  style={{width:20}}></Right>
-                            </ListItem>}/>
+                                  <FlatList data={this.state.product} 
+                                    renderItem={({item})=> <ListItem thumbnail style={{}}>
+                                    <Left>
+                                    <Text style={{fontFamily:'Montserrat-Medium'}}>09:00 Am</Text>
+                                    </Left>
+                                    <Body >
+                                    <Text style={{fontFamily:'Montserrat-Medium'}}>{item.key}</Text>
+                                    <Text note>{item.key}</Text>
+                                    </Body>
+                                    <Right  style={{width:60,alignItems: 'center',justifyContent: 'center',backgroundColor:item.status?"#4dd0e1":"fff"}}>
+                                    {item.status && <Ionicons name='ios-checkmark' size={50} style={{}} />}
+                                    </Right>
+                                    </ListItem>}/>
                    </List>
         );
     }

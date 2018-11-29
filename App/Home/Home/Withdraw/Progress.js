@@ -7,26 +7,41 @@ import React, {
     Component
 } from 'react';
 import {Platform, StyleSheet, View, FlatList, Share, TouchableOpacity} from 'react-native';
-import {Header,Container, Left, Body, Right, Button, Title, Text,Content,Icon} from 'native-base';
+import {Header,Container, Left, Body, Right, Button, Title, Text,Content,Icon,List,H3,H1,H2,ListItem,Thumbnail} from 'native-base';
 import Video from 'react-native-af-video-player';
 import {
     connect
 } from 'react-redux'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 class App extends Component < Props > {
     constructor() {
         super();
         this.state = {
-            notification: [],
+           product: [ 
+            {key: '200 Push up',status:50,time:"09:00 Am"},
+            {key: '10 Rounds Track',status:30,time:"09:00 Pm"}],
             refresh: false,
         };
     }
-
     componentDidMount() {
      }
     render() {
-        return (
-      <View style={{flex: 1, flexDirection: 'column',alignItems: 'center',justifyContent: 'center',backgroundColor : "#0000"}} >
-      </View>
+        return (    
+                    <List>
+                                  <FlatList data={this.state.product} 
+                                    renderItem={({item})=> <ListItem thumbnail style={{}}>
+                                    <Left>
+                                    <Text style={{fontFamily:'Montserrat-Medium'}}>09:00 Am</Text>
+                                    </Left>
+                                    <Body >
+                                    <Text style={{fontFamily:'Montserrat-Medium'}}>{item.key}</Text>
+                                    <Text note>{item.key}</Text>
+                                    </Body>
+                                    <Right  style={{width:60,alignItems: 'center',justifyContent: 'center',backgroundColor:item.status?"#4dd0e1":"fff"}}>
+                                    {item.status && <Ionicons name='ios-checkmark' size={50} style={{}} />}
+                                    </Right>
+                                    </ListItem>}/>
+                   </List>
         );
     }
 }

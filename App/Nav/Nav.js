@@ -39,7 +39,7 @@ export default RootStack =  createAppContainer(createStackNavigator({
   }
 },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
     headerMode :'none'
   }));
 

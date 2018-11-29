@@ -13,7 +13,6 @@ import { Header, Left, Body, Right, Button, Title, Icon, Thumbnail} from 'native
 import Home from './Home/Home';
 import Calender from './Calender/Calender';
 import Settings from './Settings/Settings';
-import History from './History/History';
 const Rootstack = createAppContainer(createMaterialBottomTabNavigator({
     Calender: {screen:Calender},
     Home: {screen:Home},

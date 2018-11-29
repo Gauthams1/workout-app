@@ -104,24 +104,21 @@ class Login extends Component {
               <Container style={{backgroundColor:'#00AFFF'}} >
 
                       <View style={{flex: 1, flexDirection: 'column',alignItems: 'center',justifyContent: 'center'}} >
-                      <View style={{flex: 3,alignItems: 'center',justifyContent: 'flex-end'}}>
+                      <View style={{flex: 5,alignItems: 'center',justifyContent: 'flex-end'}}>
                       <Image
                                 style={{width: 100, height: 100}}
                                 source={{uri: 'https://imanity.herokuapp.com/images/prj57-512x512.png'}}
                               />
                       </View>
                       {this.processindicator()}
-                      <View style={{flex: 6,alignItems: 'center',marginTop:10,justifyContent: 'flex-start'}}>
-                        <Item floatingLabel>
-                         <Label>Username</Label>
-                          <Input ref="Username" style={{color:'#fff'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Password._root.focus();}} onChangeText={(username) => this.setState({username})} />
+                      <View style={{flex: 7,alignItems: 'center',width:350,marginTop:10,justifyContent: 'flex-start'}}>
+                        <Item >
+                          <Input placeholder="Username" ref="Username" style={{color:'#fff'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Password._root.focus();}} onChangeText={(username) => this.setState({username})} />
                         </Item>
-                        <Item floatingLabel>
-                         <Label>Password</Label>
-                          <Input secureTextEntry={true} style={{color:'#fff'}} returnKeyType="next" ref='Password' onChangeText={(password) => this.setState({password})}/>
+                        <Item >
+                          <Input secureTextEntry={true} placeholder="Password" style={{color:'#fff'}} returnKeyType="next" ref='Password' onChangeText={(password) => this.setState({password})}/>
                         </Item>
-
-                          <Button style={{marginTop:10}} block  onPress={this.handlesubmit.bind(this)}>
+                          <Button rounded style={{marginTop:10}} block  onPress={this.handlesubmit.bind(this)}>
                           <Text>Sign in</Text>
                           </Button>
 

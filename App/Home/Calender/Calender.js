@@ -2,16 +2,37 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  FlatList
 } from 'react-native';
-import {Calendar} from 'react-native-calendars';
+import {CalendarList} from 'react-native-calendars';
 import { Header,  Left, Body, Right, Button, Title, Content, Icon, Thumbnail,H1, H3, H2, List, ListItem,Switch } from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default class AgendaScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: {},
+      product: {'2018-11-11':[ 
+                  {key: 'Running 50 miles',status:false,time:"09:00 Am"},
+                  {key: 'Coding for 20 hrs',status:true,time:"09:00 Pm"}
+                  ],
+                  '2018-11-22':[ 
+                  {key: 'Running for 20 miles',status:false,time:"09:00 Am"},
+                  {key: 'Cleaning the Code Repo',status:true,time:"09:00 Pm"}
+                  ],
+                  '2018-11-04':[ 
+                  {key: 'Running for 20 miles',status:false,time:"09:00 Am"},
+                  {key: 'Cleaning the Code Repo',status:true,time:"09:00 Pm"}
+                  ],
+                  '2018-11-23':[ 
+                  {key: 'Running 20 miles',status:false,time:"09:00 Am"},
+                  {key: 'Fasting for 24 hrs',status:true,time:"09:00 Pm"}
+                  ]
+               },
+            current:'2018-11-26',   
+            refresh: false,
+            day:5
     };
   }
 
@@ -22,67 +43,48 @@ componentDidMount(){
 
        <View style={{flex: 1,backgroundColor:'#fff'}}>
                     <View style={{flex: 4,backgroundColor:'#fff'}}>
-                            <Calendar
-                              onDayPress={this.onDayPress}
-                              style={styles.calendar}
-                              hideExtraDays
-                              markedDates={{[this.state.selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'orange'}}}
+                            <CalendarList
+                              // Callback which gets executed when visible months change in scroll view. Default = undefined
+                              onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
+                              // Max amount of months allowed to scroll to the past. Default = 50
+                              pastScrollRange={50}
+                              // Max amount of months allowed to scroll to the future. Default = 50
+                              futureScrollRange={50}
+                              // Enable or disable scrolling of calendar list
+                              scrollEnabled={true}
+                              // Enable or disable vertical scroll indicator. Default = false
+                              onDayPress={(day) => {this.setState({current:day.dateString})}}
+                              showScrollIndicator={true}
+                              markedDates={
+                                  {'2018-11-11': {textColor: 'aqua'},
+                                   '2018-11-22': {startingDay: true, color: 'aqua'},
+                                   '2018-11-23': {selected: true, endingDay: true, color: 'aqua',},
+                                   '2018-11-04': {disabled: true, startingDay: true, color: 'aqua', endingDay: true}
+                                  }}
+                                // Date marking style [simple/period/multi-dot/custom]. Default = 'simple'
+                              markingType={'period'}
                             />
+                    </View>
+                    <View style={{flex:4,marginTop:10}}>
+                        <FlatList data={this.state.product[this.state.current]} 
+                          renderItem={({item})=> <ListItem thumbnail style={{}}>
+                          <Left>
+                          <Text style={{fontFamily:'Montserrat-Medium'}}>{item.time}</Text>
+                          </Left>
+                          <Body >
+                          <Text style={{fontFamily:'Montserrat-Medium'}}>{item.key}</Text>
+                          <Text note>{item.key}</Text>
+                          </Body>
+                          <Right  style={{width:60,alignItems: 'center',justifyContent: 'center',backgroundColor:item.status?"#4dd0e1":"fff"}}>
+                          {item.status && <Ionicons name='ios-checkmark' size={50} style={{}} />}
+                          </Right>
+                          </ListItem>}/>
                     </View>
                 </View>
       
     );
   }
 
-  loadItems(day) {
-    console.log(day.timestamp)
-    setTimeout(() => {
-       this.state.items=[]
-      for (let i = -100; i < 200; i++) {
-         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
-        const strTime = this.timeToString(time);
-        if (!this.state.items[strTime]) {
-          this.state.items[strTime] = [];
-        }
-
-      }
-      this.state.result.forEach(item=>{
-        console.log(this.timeToString(new Date(item._id.year,item._id.month,item._id.day)))
-        this.state.items[this.timeToString(new Date(item._id.year,item._id.month-1,item._id.day))].push({
-              name: `${item._id.year}-${item._id.month}-${item._id.day} ` ,
-              height: Math.max(50, Math.floor(Math.random() * 150))
-            });
-      })
-      console.log(this.state.items)
-     const newItems = {};
-      Object.keys(this.state.items).forEach(key => {newItems[key] = this.state.items[key];});
-      this.setState({
-        items: newItems
-      });
-    }, 1000);
-    // console.log(`Load Items for ${day.year}-${day.month}`);
-  }
-
-  renderItem(item) {
-    return (
-      <View style={[styles.item, {height: item.height}]}><Text>{item.name}</Text></View>
-    );
-  }
-
-  renderEmptyDate() {
-    return (
-      <View style={styles.emptyDate}><Text>This is empty date!</Text></View>
-    );
-  }
-
-  rowHasChanged(r1, r2) {
-    return r1.name !== r2.name;
-  }
-
-  timeToString(time) {
-    const date = new Date(time);
-    return date.toISOString().split('T')[0];
-  }
 }
 
 const styles = StyleSheet.create({
@@ -98,5 +100,12 @@ const styles = StyleSheet.create({
     height: 15,
     flex:1,
     paddingTop: 30
-  }
+  },
+    calendar: {
+    borderTopWidth: 1,
+    paddingTop: 5,
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+    height: 350
+  },
 });

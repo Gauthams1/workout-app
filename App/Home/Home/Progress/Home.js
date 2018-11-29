@@ -16,6 +16,8 @@ import { Dimensions } from 'react-native'
 import Pending_1 from './Pending';
 import Missed_1 from './Missed';
 import Progress_1 from './Progress';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 const screenWidth = Dimensions.get('window').width
 const data = {
   labels: [1,2,3,4,5,6,7,8,9,10],
