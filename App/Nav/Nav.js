@@ -19,6 +19,8 @@ import Home from '../Home/Home';
 import store from '../Store/store';
 import Add from '../Add/Add';
 import Task from '../Add/Tasks';
+import Pay from '../Add/Pay';
+import Conform from '../Add/Conform';
 import User from '../User/User';
 
 export default RootStack =  createAppContainer(createStackNavigator({
@@ -36,6 +38,12 @@ export default RootStack =  createAppContainer(createStackNavigator({
   },
   Task: {
     screen: Task
+  },
+  Pay: {
+    screen: Pay
+  },
+  Conform: {
+    screen: Conform
   }
 },
   {

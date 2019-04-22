@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
 
 const Rootnavigate=createAppContainer(createMaterialTopTabNavigator({
     Day: {screen:Day},
+    Week: {screen:Week},    
     Month: {screen:Month},
-    Week: {screen:Week},
 },{
   shifting:true,
   labeled:false,

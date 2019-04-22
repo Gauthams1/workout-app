@@ -19,8 +19,8 @@ class App extends Component < Props > {
         super();
         this.state = {
             product: [ 
-            {key: 'Nike sport',status:50,url:'https://c.static-nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/ms8jq491fqaacieyslpx/odyssey-react-running-shoe-9dSlGS.jpg'},
-            {key: 'Mclaren Sport',status:30,url:'https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/media/assets/submodel/8948.jpg'}],
+            {key: 'Diet Habbit',status:50,url:'https://asset1.cxnmarksandspencer.com/is/image/mands/44e79d5a6007d11fd420b6c302d0f2fc0ef404da?$Homepage_600x330$'},
+            {key: 'Refree',status:false,url:false}],
             refresh: false,
         };
     }
@@ -33,30 +33,26 @@ class App extends Component < Props > {
                         <Text style={{fontSize:20,fontFamily:'Montserrat-Thin',margin:3}}>Good Job Man !</Text>
                         <Text style={{fontSize:20,fontFamily:'Montserrat-Thin',margin:3}}>you havnt missed any activities this week</Text>
                     </View>
-                    <View style={{flex: 2,backgroundColor:'#fff', flexDirection: 'row',alignSelf:"center"}}>
-                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Left_Progress')}>
-                        <View style={{flex: 1,flexDirection:'column',backgroundColor:'#4dd0e1',alignItems:'center',justifyContent:'center'}}>
+                    <View style={{flex: 2,backgroundColor:'#fff', flexDirection: 'row',alignSelf:"stretch"}}>
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Left_Progress')} style={{flex: 1}}>
+                        <View style={{flex: 1,flexDirection:'column',backgroundColor:'#111111',alignItems:'center',justifyContent:'center'}}>
                             <H3 style={{color:"#fff",fontFamily:'Montserrat-Light',margin:10}}>1.01^Upto today</H3>
                             <H1 style={{color:"#fff",fontFamily:'Montserrat-Bold',margin:10}}>10</H1>
                         </View>
                     </TouchableOpacity>   
-                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Right_Withdraw')}> 
-                        <View style={{flex: 1,flexDirection:'column',backgroundColor:'#ba68c8',alignItems:'center',justifyContent:'center'}}>
-                            <H3 style={{color:"#fff",fontFamily:'Montserrat-Light',margin:10}}>0.99^Upto today</H3>
-                            <H1 style={{color:"#fff",fontFamily:'Montserrat-Bold',margin:10}}>0.1</H1>
-                        </View>
-                    </TouchableOpacity>      
+                    
                     </View>
                     <View style={{flex: 4,backgroundColor:'#fff',marginTop:30}}>
                     <List>
                             <FlatList data={this.state.product} 
                             renderItem={({item})=> <ListItem thumbnail>
                             <Left>
-                            <Thumbnail square large source={{ uri: item.url }} />
+                            {item.url&&<Thumbnail square large source={{ uri: item.url }} />}
+                            {!item.url&&<Thumbnail square large source={require('./ref.jpeg')} />}
                             </Left>
                             <Body style={{width:'40%'}}>
                             <H3 style={{margin:10,fontWeight:'bold'}}>{item.key}</H3>
-                            <Progress.Bar  progress={item.status/100} height={2} width={null} />
+                            {item.status&&<Progress.Bar  progress={item.status/100} height={2} width={null} />}
                             </Body>
                             <Right  style={{width:20}}></Right>
                             </ListItem>}/>

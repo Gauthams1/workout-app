@@ -91,16 +91,10 @@ export default class App extends Component < Props > {
                         </ListItem>  
                         <ListItem itemDivider>
                           <Text>Duration</Text>
-                        </ListItem>                    
-                        <ListItem>
-                            <Item floatingLabel>
-                              <Label>Amount Locking</Label>
-                              <Input />
-                            </Item>
-                        </ListItem>  
-                      </List>
-                       <Button block >
-                        <Text>Start the Task</Text>
+                        </ListItem>
+                        </List>
+                       <Button block onPress={()=>this.props.navigation.navigate('Pay')}>
+                        <Text>Invest</Text>
                       </Button>
                       </ScrollView>
                     </View>

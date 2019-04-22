@@ -101,22 +101,22 @@ class Login extends Component {
         if (!this.state.isLoggedIn) {
             if (this.state.pagelog) {
                 return (<Root>
-              <Container style={{backgroundColor:'#00AFFF'}} >
+              <Container style={{backgroundColor:'#FFFFFF'}} >
 
                       <View style={{flex: 1, flexDirection: 'column',alignItems: 'center',justifyContent: 'center'}} >
                       <View style={{flex: 5,alignItems: 'center',justifyContent: 'flex-end'}}>
                       <Image
                                 style={{width: 100, height: 100}}
-                                source={{uri: 'https://imanity.herokuapp.com/images/prj57-512x512.png'}}
+                                source={require('./login.jpeg')}
                               />
                       </View>
                       {this.processindicator()}
                       <View style={{flex: 7,alignItems: 'center',width:350,marginTop:10,justifyContent: 'flex-start'}}>
                         <Item >
-                          <Input placeholder="Username" ref="Username" style={{color:'#fff'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Password._root.focus();}} onChangeText={(username) => this.setState({username})} />
+                          <Input placeholder="Username" ref="Username" style={{color:'#000'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Password._root.focus();}} onChangeText={(username) => this.setState({username})} />
                         </Item>
                         <Item >
-                          <Input secureTextEntry={true} placeholder="Password" style={{color:'#fff'}} returnKeyType="next" ref='Password' onChangeText={(password) => this.setState({password})}/>
+                          <Input secureTextEntry={true} placeholder="Password" style={{color:'#000'}} returnKeyType="next" ref='Password' onChangeText={(password) => this.setState({password})}/>
                         </Item>
                           <Button rounded style={{marginTop:10}} block  onPress={this.handlesubmit.bind(this)}>
                           <Text>Sign in</Text>
@@ -133,29 +133,29 @@ class Login extends Component {
                   </Root>);
             } else {
                 return (<Root>
-                <Container style={{backgroundColor:'#00AFFF'}} >
+                <Container style={{backgroundColor:'#FFFFFF'}} >
                         <View style={{flex: 1, flexDirection: 'column',alignItems: 'center',justifyContent: 'center'}} >
                         <View style={{flex: 3,alignItems: 'center',justifyContent: 'flex-end'}}>
                         <Image
                                   style={{width: 100, height: 100}}
-                                  source={{uri: 'https://imanity.herokuapp.com/images/prj57-512x512.png'}}
+                                  source={require('./login.jpeg')}
                                 />
                         </View>
                         <View style={{flex: 6,alignItems: 'center',width:350,justifyContent: 'flex-start'}}>
                           <Item >
-                            <Input placeholder="Name" ref="Name" style={{color:'#fff'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Username._root.focus();}} onChangeText={(name) => this.setState({name})} />
+                            <Input placeholder="Name" ref="Name" style={{color:'#000'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Username._root.focus();}} onChangeText={(name) => this.setState({name})} />
                           </Item>
                           <Item >
-                            <Input placeholder="Username" ref="Username" style={{color:'#fff'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Email._root.focus();}} onChangeText={(username) => this.setState({username})} />
+                            <Input placeholder="Username" ref="Username" style={{color:'#000'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Email._root.focus();}} onChangeText={(username) => this.setState({username})} />
                           </Item>
                           <Item >
-                            <Input placeholder="Email" ref="Email" style={{color:'#fff'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Password._root.focus();}} onChangeText={(email) => this.setState({email})} />
+                            <Input placeholder="Email" ref="Email" style={{color:'#000'}} returnKeyType="next"  onSubmitEditing={() =>{ this.refs.Password._root.focus();}} onChangeText={(email) => this.setState({email})} />
                           </Item>
                           <Item >
-                            <Input secureTextEntry={true} placeholder="Password" style={{color:'#fff'}} returnKeyType="next" ref='Password' onSubmitEditing={() =>{ this.refs.CPassword._root.focus();}} onChangeText={(password) => this.setState({password})}/>
+                            <Input secureTextEntry={true} placeholder="Password" style={{color:'#000'}} returnKeyType="next" ref='Password' onSubmitEditing={() =>{ this.refs.CPassword._root.focus();}} onChangeText={(password) => this.setState({password})}/>
                           </Item>
                           <Item >
-                            <Input secureTextEntry={true} placeholder="Conform Password" style={{color:'#fff'}} returnKeyType="next" ref='CPassword' onChangeText={(cpassword) => this.setState({cpassword})}/>
+                            <Input secureTextEntry={true} placeholder="Conform Password" style={{color:'#000'}} returnKeyType="next" ref='CPassword' onChangeText={(cpassword) => this.setState({cpassword})}/>
                           </Item>
                             <Button rounded style={{marginTop:10}} block  onPress={this.Signup.bind(this)}>
                             <Text>Sign Up</Text>

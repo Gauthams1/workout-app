@@ -101,6 +101,7 @@ android {
         applicationId "com.project"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        vectorDrawables.useSupportLibrary
         versionCode 1
         versionName "1.0"
         ndk {
@@ -148,6 +149,8 @@ android {
 }
 
 dependencies {
+    compile project(':@react-native-community_async-storage')
+    compile project(':react-native-image-crop-picker')
     compile project(':react-native-svg')
     compile project(':react-native-gesture-handler')
     compile project(':react-native-linear-gradient')
@@ -156,6 +159,10 @@ dependencies {
     compile project(':react-native-video')
     compile project(':react-native-vector-icons')
     compile project(':react-native-material-kit')
+    compile 'com.facebook.fresco:fresco:1.+'
+    compile 'com.facebook.fresco:animated-gif:1.+'
+    compile 'com.facebook.fresco:animated-webp:1.+'
+    compile 'com.facebook.fresco:webpsupport:1.+' 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
